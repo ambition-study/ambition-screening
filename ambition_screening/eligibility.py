@@ -74,7 +74,8 @@ class Eligibility:
             no_amphotericin='> 0.7mg/kg of Amphotericin B.',
             no_fluconazole='> 48hrs of Fluconazole.',
             will_hiv_test='HIV unknown or unwilling to test.',
-            consent_ability='Not able or unwilling to give ICF.')
+            consent_ability='Not able or unwilling to give ICF.',
+            not_suitable='Patient unsuitable for study.')
         for k in custom_reasons_dict:
             if k in custom_reasons_dict and k not in self.criteria:
                 raise EligibilityError(

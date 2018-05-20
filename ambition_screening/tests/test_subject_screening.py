@@ -119,6 +119,18 @@ class TestSubjectScreening(AmbitionTestCaseMixin, TestCase):
             gender=FEMALE, pregnancy=YES)
         self.assertFalse(subject_screening.eligible)
 
+    def test_ineligible_if_unsuitable_for_study_yes(self):
+        subject_screening = mommy.make_recipe(
+            'ambition_screening.subjectscreening',
+            unsuitable_for_study=YES)
+        self.assertFalse(subject_screening.eligible)
+
+    def test_eligible_if_unsuitable_for_study_no(self):
+        subject_screening = mommy.make_recipe(
+            'ambition_screening.subjectscreening',
+            unsuitable_for_study=NO)
+        self.assertTrue(subject_screening.eligible)
+
     def test_screening_id_created(self):
         subject_screening = mommy.make_recipe(
             'ambition_screening.subjectscreening')

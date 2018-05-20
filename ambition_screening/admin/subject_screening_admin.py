@@ -27,7 +27,8 @@ class SubjectScreeningAdmin(ModelAdminMixin, SimpleHistoryAdmin, admin.ModelAdmi
         'previous_drug_reaction': admin.VERTICAL,
         'contraindicated_meds': admin.VERTICAL,
         'received_amphotericin': admin.VERTICAL,
-        'received_fluconazole': admin.VERTICAL}
+        'received_fluconazole': admin.VERTICAL,
+        'unsuitable_for_study': admin.VERTICAL}
 
     fieldsets = (
         (None, {
@@ -45,7 +46,9 @@ class SubjectScreeningAdmin(ModelAdminMixin, SimpleHistoryAdmin, admin.ModelAdmi
                 'previous_drug_reaction',
                 'contraindicated_meds',
                 'received_amphotericin',
-                'received_fluconazole',)
+                'received_fluconazole',
+                'unsuitable_for_study',
+                'reasons_unsuitable',)
         }),
         ('Blood Results', {
             'fields': (

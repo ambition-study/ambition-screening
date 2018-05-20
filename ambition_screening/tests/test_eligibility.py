@@ -27,7 +27,8 @@ class TestEligibility(AmbitionTestCaseMixin, TestCase):
             no_concomitant_meds=True,
             no_drug_reaction=True,
             no_fluconazole=True,
-            will_hiv_test=True)
+            will_hiv_test=True,
+            not_suitable=True)
 
     def test_eligibility_without_criteria(self):
         self.assertRaises(

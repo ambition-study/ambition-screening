@@ -24,7 +24,8 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
             previous_drug_reaction=NO,
             contraindicated_meds=NO,
             received_amphotericin=NO,
-            received_fluconazole=NO)
+            received_fluconazole=NO,
+            unsuitable_for_study=NO,)
 
         self.female_data = dict(
             subject_identifier='678910',
@@ -41,7 +42,8 @@ class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
             previous_drug_reaction=NO,
             contraindicated_meds=NO,
             received_amphotericin=NO,
-            received_fluconazole=NO)
+            received_fluconazole=NO,
+            unsuitable_for_study=NO,)
 
     def test_default_ok(self):
         form = SubjectScreeningForm(data=self.male_data)
