@@ -158,7 +158,7 @@ class TestSubjectScreening(AmbitionTestCaseMixin, TestCase):
         self.assertFalse(subject_screening.eligible)
         self.assertEqual(
             subject_screening.reasons_ineligible,
-            'High ALT: 201. Ref: x<=200.0 IU/L MF, 18<=AGE years.')
+            'High ALT: 201. Ref: x<=200.0 IU/L MF.')
 
     def test_neutrophil(self):
         subject_screening = mommy.make_recipe(
@@ -167,7 +167,7 @@ class TestSubjectScreening(AmbitionTestCaseMixin, TestCase):
         self.assertFalse(subject_screening.eligible)
         self.assertEqual(
             subject_screening.reasons_ineligible,
-            'Low neutrophil: 0.4. Ref: 0.5<=x 10^9/L MF, 18<=AGE years.')
+            'Low neutrophil: 0.4. Ref: 0.5<=x 10^9/L MF.')
 
     def test_platelets(self):
         subject_screening = mommy.make_recipe(
@@ -176,4 +176,4 @@ class TestSubjectScreening(AmbitionTestCaseMixin, TestCase):
         self.assertFalse(subject_screening.eligible)
         self.assertEqual(
             subject_screening.reasons_ineligible,
-            'Low platelets: 49. Ref: 50.0<=x 10^9/L MF, 18<=AGE years.')
+            'Low platelets: 49. Ref: 50.0<=x 10^9/L MF.')
