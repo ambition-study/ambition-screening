@@ -11,12 +11,12 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='ambition-screening',
-    version='0.1.2',
+    version='0.1.3',
     author=u'Erik van Widenfelt',
     author_email='erikvW@gmail.com',
     packages=find_packages(),
     include_package_data=True,
-    url='https://github.com/botswana-harvard/ambition-screening',
+    url='https://github.com/ambition-study/ambition-screening',
     license='GPL license, see LICENSE',
     description='Determine a subject\'s eligibility.',
     long_description=README,

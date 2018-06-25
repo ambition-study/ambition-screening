@@ -38,6 +38,7 @@ class SubjectScreeningEligibility:
             no_concomitant_meds=if_no(model_obj.contraindicated_meds),
             no_amphotericin=if_no(model_obj.received_amphotericin),
             no_fluconazole=if_no(model_obj.received_fluconazole),
+            not_suitable=if_no(model_obj.unsuitable_for_study),
             subject_screening=model_obj,
         )
         self.eligible = eligibility_obj.eligible

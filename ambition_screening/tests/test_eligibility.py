@@ -1,3 +1,4 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from copy import copy
 from django.test import TestCase, tag
 from edc_constants.constants import FEMALE
@@ -5,7 +6,7 @@ from edc_constants.constants import FEMALE
 from ..eligibility import Eligibility, EligibilityError
 
 
-class TestEligibility(TestCase):
+class TestEligibility(AmbitionTestCaseMixin, TestCase):
 
     def setUp(self):
         self.evaluator_criteria = dict(
@@ -26,7 +27,8 @@ class TestEligibility(TestCase):
             no_concomitant_meds=True,
             no_drug_reaction=True,
             no_fluconazole=True,
-            will_hiv_test=True)
+            will_hiv_test=True,
+            not_suitable=True)
 
     def test_eligibility_without_criteria(self):
         self.assertRaises(

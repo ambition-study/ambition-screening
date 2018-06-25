@@ -1,10 +1,11 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from django.test import TestCase, tag
 from edc_constants.constants import FEMALE, MALE
 
 from ..eligibility import GenderEvaluator
 
 
-class TestGenderEvaluator(TestCase):
+class TestGenderEvaluator(AmbitionTestCaseMixin, TestCase):
 
     def test_eligibility_gender(self):
         gender_evaluator = GenderEvaluator()

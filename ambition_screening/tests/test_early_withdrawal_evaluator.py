@@ -1,6 +1,6 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from ambition_visit_schedule.constants import DAY1
 from django.test import TestCase, tag
-from edc_base.tests import SiteTestCaseMixin
 from edc_reportable.units import IU_LITER, TEN_X_9_PER_LITER
 from model_mommy import mommy
 
@@ -12,7 +12,7 @@ from .models import SubjectVisit, BloodResult
 EarlyWithdrawalEvaluator.blood_result_model = 'ambition_screening.bloodresult'
 
 
-class TestEarlyWithdrawalEvaluator(SiteTestCaseMixin, TestCase):
+class TestEarlyWithdrawalEvaluator(AmbitionTestCaseMixin, TestCase):
 
     def test_early_withdrawal_criteria_no(self):
         opts = dict(alt=None, neutrophil=None, platelets=None)

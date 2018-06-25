@@ -1,9 +1,10 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from django.test import TestCase, tag
 
 from ..reportables import age_evaluator
 
 
-class TestAgeEvaluator(TestCase):
+class TestAgeEvaluator(AmbitionTestCaseMixin, TestCase):
 
     def test_eligibility_invalid_age_in_years(self):
         self.assertFalse(age_evaluator.eligible(17))

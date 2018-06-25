@@ -1,6 +1,6 @@
 from django.db import models
-from edc_reportable.units import TEN_X_9_PER_LITER, IU_LITER
 from django.db.models.deletion import PROTECT
+from edc_reportable.units import TEN_X_9_PER_LITER, IU_LITER
 
 
 class SubjectVisit(models.Model):

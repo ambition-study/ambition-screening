@@ -1,5 +1,5 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from django.test import TestCase, tag
-from edc_base.tests import SiteTestCaseMixin
 from edc_constants.constants import FEMALE, YES, NORMAL, NO, MALE, NOT_APPLICABLE
 from edc_form_validators.base_form_validator import NOT_APPLICABLE_ERROR
 from model_mommy import mommy
@@ -7,9 +7,8 @@ from model_mommy import mommy
 from ..models import SubjectScreening
 
 
-class TestSubjectScreening(SiteTestCaseMixin, TestCase):
+class TestSubjectScreening(AmbitionTestCaseMixin, TestCase):
 
-    @tag('1')
     def test_eligible_with_default_recipe_criteria(self):
         subject_screening = mommy.make_recipe(
             'ambition_screening.subjectscreening')
@@ -120,6 +119,18 @@ class TestSubjectScreening(SiteTestCaseMixin, TestCase):
             gender=FEMALE, pregnancy=YES)
         self.assertFalse(subject_screening.eligible)
 
+    def test_ineligible_if_unsuitable_for_study_yes(self):
+        subject_screening = mommy.make_recipe(
+            'ambition_screening.subjectscreening',
+            unsuitable_for_study=YES)
+        self.assertFalse(subject_screening.eligible)
+
+    def test_eligible_if_unsuitable_for_study_no(self):
+        subject_screening = mommy.make_recipe(
+            'ambition_screening.subjectscreening',
+            unsuitable_for_study=NO)
+        self.assertTrue(subject_screening.eligible)
+
     def test_screening_id_created(self):
         subject_screening = mommy.make_recipe(
             'ambition_screening.subjectscreening')
@@ -147,7 +158,7 @@ class TestSubjectScreening(SiteTestCaseMixin, TestCase):
         self.assertFalse(subject_screening.eligible)
         self.assertEqual(
             subject_screening.reasons_ineligible,
-            'High ALT: 201. Ref: x<=200.0 IU/L MF, 18<=AGE years.')
+            'High ALT: 201. Ref: x<=200.0 IU/L MF.')
 
     def test_neutrophil(self):
         subject_screening = mommy.make_recipe(
@@ -156,7 +167,7 @@ class TestSubjectScreening(SiteTestCaseMixin, TestCase):
         self.assertFalse(subject_screening.eligible)
         self.assertEqual(
             subject_screening.reasons_ineligible,
-            'Low neutrophil: 0.4. Ref: 0.5<=x 10^9/L MF, 18<=AGE years.')
+            'Low neutrophil: 0.4. Ref: 0.5<=x 10^9/L MF.')
 
     def test_platelets(self):
         subject_screening = mommy.make_recipe(
@@ -165,4 +176,4 @@ class TestSubjectScreening(SiteTestCaseMixin, TestCase):
         self.assertFalse(subject_screening.eligible)
         self.assertEqual(
             subject_screening.reasons_ineligible,
-            'Low platelets: 49. Ref: 50.0<=x 10^9/L MF, 18<=AGE years.')
+            'Low platelets: 49. Ref: 50.0<=x 10^9/L MF.')

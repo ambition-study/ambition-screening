@@ -3,6 +3,7 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = 'ambition_screening'
+ETC_DIR = os.path.join(BASE_DIR, 'etc')
 SITE_ID = 40
 REVIEWER_SITE_ID = 0
 # Quick-start development settings - unsuitable for production
@@ -27,8 +28,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_crypto_fields.apps.AppConfig',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'edc_base.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
+    'edc_protocol.apps.AppConfig',
     'edc_device.apps.AppConfig',
+    'edc_sync.apps.AppConfig',
+    'edc_sync_files.apps.AppConfig',
+    'ambition_rando.apps.AppConfig',
+    'ambition_screening.apps.EdcFacilityAppConfig',
     'ambition_screening.apps.AppConfig',
 ]
 
@@ -118,6 +128,15 @@ DASHBOARD_URL_NAMES = {
     'screening_listboard_url': 'ambition_dashboard:screening_listboard_url',
     'subject_dashboard_url': 'ambition_dashboard:subject_dashboard_url',
 }
+
+RANDOMIZATION_LIST_PATH = os.path.join(BASE_DIR, 'test_randomization_list.csv')
+COUNTRY = 'botswana'
+HOLIDAY_FILE = os.path.join(BASE_DIR, 'holidays.csv')
+
+EDC_SYNC_SERVER_IP = None
+EDC_SYNC_FILES_REMOTE_HOST = None
+EDC_SYNC_FILES_USER = None
+EDC_SYNC_FILES_USB_VOLUME = None
 
 if 'test' in sys.argv:
 

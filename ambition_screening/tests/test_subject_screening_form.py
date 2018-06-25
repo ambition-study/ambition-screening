@@ -1,12 +1,13 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
+from copy import copy
 from django.test import TestCase, tag
+from edc_base.utils import get_utcnow
 from edc_constants.constants import YES, FEMALE, NO, NOT_APPLICABLE, MALE, NORMAL
 
 from ..forms import SubjectScreeningForm
-from edc_base.utils import get_utcnow
-from copy import copy
 
 
-class TestSubjectScreeningForm(TestCase):
+class TestSubjectScreeningForm(AmbitionTestCaseMixin, TestCase):
 
     def setUp(self):
         self.male_data = dict(
@@ -23,7 +24,8 @@ class TestSubjectScreeningForm(TestCase):
             previous_drug_reaction=NO,
             contraindicated_meds=NO,
             received_amphotericin=NO,
-            received_fluconazole=NO)
+            received_fluconazole=NO,
+            unsuitable_for_study=NO,)
 
         self.female_data = dict(
             subject_identifier='678910',
@@ -40,7 +42,8 @@ class TestSubjectScreeningForm(TestCase):
             previous_drug_reaction=NO,
             contraindicated_meds=NO,
             received_amphotericin=NO,
-            received_fluconazole=NO)
+            received_fluconazole=NO,
+            unsuitable_for_study=NO,)
 
     def test_default_ok(self):
         form = SubjectScreeningForm(data=self.male_data)

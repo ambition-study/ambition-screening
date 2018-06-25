@@ -175,6 +175,19 @@ class SubjectScreening(SubjectIdentifierModelMixin, SiteModelMixin, BaseUuidMode
         default=False,
         editable=False)
 
+    unsuitable_for_study = models.CharField(
+        verbose_name=('Is there any other reason the patient is '
+                      'deemed to not be suitable for the study?'),
+        max_length=5,
+        choices=YES_NO,
+        help_text='If YES, patient NOT eligible, please give reason below.')
+
+    reasons_unsuitable = models.TextField(
+        verbose_name='Reason not eligible',
+        max_length=150,
+        null=True,
+        blank=True,)
+
     on_site = CurrentSiteManager()
 
     objects = SubjectScreeningManager()

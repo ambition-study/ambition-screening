@@ -1,3 +1,4 @@
+from ambition_rando.tests import AmbitionTestCaseMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, tag
 from edc_identifier.models import IdentifierModel
@@ -6,7 +7,7 @@ from model_mommy import mommy
 from ..identifiers import ScreeningIdentifier
 
 
-class TestIdentifiers(TestCase):
+class TestIdentifiers(AmbitionTestCaseMixin, TestCase):
 
     def test_identifier(self):
         identifier = ScreeningIdentifier()
